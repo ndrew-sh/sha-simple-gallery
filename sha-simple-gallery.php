@@ -218,8 +218,6 @@ class SHA_Simple_Gallery {
 	// Override default excerpt labels
 	public function override_excerpt_text( $translation, $original ) {
 
-		global $post;
-
 		if ( 'Excerpt' == $original ) {
 			return __( 'Picture description', 'sha-sgal' );
 		} else {
