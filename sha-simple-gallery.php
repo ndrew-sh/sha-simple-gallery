@@ -18,13 +18,15 @@ class SHA_Simple_Gallery {
 
 	protected $_plugin_name;
 
+	protected $_plugin_version = '0.1.0';
+
 	protected $_plugin_file;
 
 	protected $_plugin_slug;
 
 	protected $_prefix;
 
-	protected $_taxonomy = 'sha-sgal';
+	protected $_taxonomy;
 
 	protected $_shortcode = 'cptgallery';
 
@@ -55,16 +57,18 @@ class SHA_Simple_Gallery {
         $this->_plugin_name = basename( dirname( __FILE__ , 1 ) );
         $this->_plugin_file = __FILE__;
         $this->_plugin_slug = 'sgal';
+        $this->_taxonomy = 'sha-sgal';
         $this->_prefix = 'sgal_';
 
 		$default_settings = array(
 			'default'               => 4,
 			'variants'              => array(
-				'2' => __( '2 images', 'sha-sgal' ),
-				'3' => __( '3 images', 'sha-sgal' ),
-				'4' => __( '4 images', 'sha-sgal' ),
-				'5' => __( '5 images', 'sha-sgal' ),
-				'6' => __( '6 images', 'sha-sgal' )
+//TODO как то придумать подключение языков
+				'2' => '2 images',
+				'3' => '3 images',
+				'4' => '4 images',
+				'5' => '5 images',
+				'6' => '6 images'
 			),
 			'default_thumb_size'    => 'medium',
 			'default_full_size'		=> 'large',
@@ -357,7 +361,7 @@ class SHA_Simple_Gallery {
 	// Enqueue fancybox css/js
     public function enqueue_styles_and_scripts() {
 
-        $timestamp = ( WP_DEBUG ) ? time() : '1.0.0';
+        $timestamp = ( WP_DEBUG ) ? time() : $this->_plugin_version;
 
         if ( !wp_style_is('fancybox', 'enqueued') ) {
             // Loading Fancybox files from CDN
@@ -508,7 +512,7 @@ class SHA_Simple_Gallery {
     // Equeueing block assets and passing data to js
     public function enqueue_block_editor_assets() {
 
-        $timestamp = ( WP_DEBUG ) ? time() : '1.0.0';
+        $timestamp = ( WP_DEBUG ) ? time() : $this->_plugin_version;
 
         wp_enqueue_script(
             'sha-sgal-block',
@@ -528,15 +532,16 @@ class SHA_Simple_Gallery {
             )
         );
 
-        if ( !is_wp_error( $terms ) ) {
+        if ( ! is_wp_error( $terms ) ) {
             foreach ( $terms as $term ) {
                 $term_meta = get_option( "cpt_gal_{$term->term_id}" );
+
                 $galleries['terms'][] = array(
                     'id'    => $term->term_id,
                     'name'  => $term->name
                 );
 
-                $galleries['per_row'][ $term->term_id ] = $term_meta['cpt_cols'];
+                $galleries['per_row'][ $term->term_id ] = $term_meta ? $term_meta['cpt_cols'] : $this->_settings['default'];
             }
         }
 
