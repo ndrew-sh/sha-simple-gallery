@@ -1,0 +1,21 @@
+<?php if ( count( $gallery_pics ) > 0 ): ?>
+<div id="cpt-gallery-<?php echo (int)$gallery_id; ?>" class="cpt-gallery">
+    <?php if ( isset( $gallery_settings['cpt_show_gal_name'] ) && ( $gallery_settings['cpt_show_gal_name'] == 1 ) ): ?>
+    <div class="cpt-gallery-name"><?php echo esc_html( $gallery_data->name ); ?></div>
+    <?php endif; ?>
+    <?php if ( isset( $gallery_settings['cpt_show_gal_desc'] ) && ( $gallery_settings['cpt_show_gal_desc'] == 1 ) ): ?>
+    <div class="cpt-gallery-description"><?php echo esc_html( $gallery_data->description ); ?></div>
+    <?php endif; ?>
+    <div class="cpt-gallery-container">
+        <ul class="columns-<?php echo (int)$gallery_settings['cpt_cols']; ?>">
+        <?php foreach ( $gallery_pics as $picture ): ?>
+            <li>
+                <a data-fancybox="gallery-<?php echo (int)$gallery_id; ?>" data-src="<?php echo esc_url( $picture['large'] ); ?>" title="<?php echo esc_attr( $picture['title'] ); ?>" data-caption="<?php echo esc_attr( $picture['caption'] ); ?>" class="fancybox">
+                    <img src="<?php echo esc_url( $picture['thumb'] ); ?>" />
+                </a>
+            </li>
+        <?php endforeach; ?>
+        </ul>
+	</div>
+</div>
+<?php endif; ?>

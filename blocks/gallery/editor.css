@@ -1,0 +1,35 @@
+.sha-sgal-wrapper {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.sha-sgal-wrapper ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sha-sgal-wrapper ul li {
+    padding: 1%;
+    text-align: center;
+}
+
+.sha-sgal-wrapper ul.items-2 li {
+    width: 48%;
+}
+.sha-sgal-wrapper ul.items-3 li {
+    width: 31%;
+}
+.sha-sgal-wrapper ul.items-4 li {
+    width: 23%;
+}
+.sha-sgal-wrapper ul.items-5 li {
+    width: 18%;
+}
+.sha-sgal-wrapper ul li img {
+    height: 100%;
+    width: 100%;
+}

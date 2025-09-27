@@ -1,0 +1,47 @@
+		<tr class="form-field">
+			<th scope="row" valign="top">	
+				<label for="term_meta[cpt_cols]"><?php _e( 'Number of images in a row', 'sha-sgal' ); ?></label>
+			</th>
+			<td>
+				<select name="term_meta[cpt_cols]" id="term_meta[cpt_cols]">
+					<?php foreach ( $variants as $k => $v ): ?>
+                        <?php $selected = ( $k == $term_meta['cpt_cols'] ) ? ' selected' : ''; ?>
+                        <option value="<?php echo esc_attr( $k ); ?>"<?php echo $selected; ?>><?php esc_html_e( $v, 'sha-sgal' ); ?></option>
+					<?php endforeach; ?>
+				</select>
+			</td>
+		</tr>
+		<tr class="form-field">
+			<th scope="row" valign="top">	
+				<label for="term_meta[cpt_thumb_size]"><?php _e( 'Thumbnail size', 'sha-sgal' ); ?></label>
+			</th>
+			<td>
+                <select name="term_meta[cpt_thumb_size]" id="term_meta[cpt_thumb_size]">
+                  <?php foreach ( $image_sizes as $size_name => $sizes_values ): ?>
+                    <?php $selected = ( $size_name == $term_meta['cpt_thumb_size'] ) ? ' selected' : ''; ?>
+                    <?php $size_dimensions = (int) $image_sizes[ $size_name ]['width'] . 'x' . (int) $image_sizes[ $size_name ]['height']; ?>
+                    <option value="<?php echo esc_attr( $size_name ); ?>"<?php echo $selected; ?>><?php echo esc_html( $size_name ); ?> (<?php echo $size_dimensions; ?>)</option>
+                  <?php endforeach; ?>
+                </select>
+			</td>
+		</tr>
+		<tr class="form-field">
+			<th scope="row" valign="top">	
+				<label for="term_meta[cpt_show_gal_name]"><?php _e( 'Show Gallery Name', 'sha-sgal' ); ?></label>
+			</th>
+			<td>
+                <?php $checked = ! empty( $term_meta['cpt_show_gal_name'] ) ? ' checked' : ''; ?>
+                <input type="hidden" name="term_meta[cpt_show_gal_name]" value="0" />
+				<input type="checkbox" name="term_meta[cpt_show_gal_name]" id="term_meta[cpt_show_gal_name]" value="1"<?php echo $checked; ?>>
+			</td>
+		</tr>
+		<tr class="form-field">
+			<th scope="row" valign="top">	
+				<label for="term_meta[cpt_show_gal_desc]"><?php _e( 'Show Gallery Descripion', 'sha-sgal' ); ?></label>
+			</th>
+			<td>
+                <?php $checked = ! empty( $term_meta['cpt_show_gal_desc'] ) ? ' checked' : ''; ?>
+                <input type="hidden" name="term_meta[cpt_show_gal_desc]" value="0" />
+				<input type="checkbox" name="term_meta[cpt_show_gal_desc]" id="term_meta[cpt_show_gal_desc]" value="1"<?php echo $checked; ?>>
+			</td>
+		</tr>

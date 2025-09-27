@@ -1,0 +1,87 @@
+.cpt-gallery .cpt-gallery-name {
+    font-size: 150%;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.cpt-gallery .cpt-gallery-description {
+    margin-bottom: 20px;
+}
+
+.cpt-gallery ul {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0px;
+    list-style: none;
+    margin-left: -2.5%;
+}
+
+.cpt-gallery ul li {
+	background: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 0 5px #ddd;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-size: 1rem;
+	list-style-type: none;
+	margin: 0 0 2.5% 2.5%;
+	padding: 5px;
+	vertical-align: top;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.cpt-gallery ul li img {
+	height: 100%;
+	margin: 0;
+	max-width: 100%;
+	width: 100%;
+}
+
+/* class for 2 columns */
+.cpt-gallery ul.columns-2 li {
+	width: 47.5%; /* this value + 2.5 should = 50% */
+}
+
+/* class for 3 columns */
+.cpt-gallery ul.columns-3 li {
+	width: 30.83%; /* this value + 2.5 should = 33% */
+}
+
+/* class for 4 columns */
+.cpt-gallery ul.columns-4 li {
+	width: 22.5%; /* this value + 2.5 should = 25% */
+}
+
+/* class for 5 columns */
+.cpt-gallery ul.columns-5 li {
+	width: 17.5%; /* this value + 2.5 should = 20% */
+}
+
+/* class for 6 columns */
+.cpt-gallery ul.columns-6 li {
+	width: 14.16%; /* this value + 2.5 should = 16.66% */
+}
+
+a.fancybox:hover {
+    cursor: pointer;
+}
+
+ 
+@media (max-width: 480px) {
+    .cpt-gallery ul,
+    .cpt-gallery ul li,
+    .cpt-gallery ul li a {
+        display: block;
+	}
+
+	.cpt-gallery ul li {
+		margin: 0 0 20px;
+		width: 100% !important; /* over-ride all li styles */
+	}
+
+	.cpt-gallery ul {
+		margin-left: 0;
+	}
+}

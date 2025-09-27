@@ -1,0 +1,37 @@
+		<div class="form-field">
+			<label for="term_meta[cpt_cols]"><?php _e( 'Number of images in a row', 'sha-sgal' ); ?></label>
+			<select name="term_meta[cpt_cols]" id="term_meta[cpt_cols]">
+                <?php foreach ( $variants as $k => $v ): ?>
+                    <?php $selected = ( $k == $term_meta['cpt_cols'] ) ? ' selected' : ''; ?>
+                    <option value="<?php echo esc_attr( $k ); ?>"<?php echo $selected; ?>><?php esc_html_e( $v, 'sha-sgal' ); ?></option>
+                <?php endforeach; ?>
+			</select>
+			<p class="description"><?php _e( 'Choose a number of images in a row', 'sha-sgal' ); ?></p>
+		</div>
+		<div class="form-field">
+			<label for="term_meta[cpt_thumb_size]"><?php _e( 'Thumbnail size', 'sha-sgal' ); ?></label>
+                <select name="term_meta[cpt_thumb_size]" id="term_meta[cpt_thumb_size]">
+                    <?php foreach ( $image_sizes as $size_name => $sizes_values ): ?>
+                    <?php $selected = ( $size_name == $term_meta['cpt_thumb_size'] ) ? ' selected' : ''; ?>
+                    <?php $size_dimensions = (int)$image_sizes[ $size_name ]['width'] . 'x' . (int)$image_sizes[ $size_name ]['height']; ?>
+                    <option value="<?php echo esc_attr( $size_name ); ?>"<?php echo $selected; ?>><?php echo esc_html( $size_name ); ?> (<?php echo $size_dimensions; ?>)</option>
+                <?php endforeach; ?>
+            </select>
+			<p class="description"><?php _e( 'Choose a thumbnail size. Add your own with add_image_size()', 'sha-sgal' ); ?></p>
+		</div>
+		<div class="form-field">
+			<label for="term_meta[cpt_show_gal_name]">
+                <input type="hidden" name="term_meta[cpt_show_gal_name]" value="0" />
+                <input type="checkbox" name="term_meta[cpt_show_gal_name]" id="term_meta[cpt_show_gal_name]" value="1">
+                <?php _e( 'Show Gallery Name', 'sha-sgal' ); ?>
+            </label>
+			<p class="description"><?php _e( 'Check, if you want to show gallery name', 'sha-sgal' ); ?></p>
+		</div>
+		<div class="form-field">
+			<label for="term_meta[cpt_show_desc]">
+                <input type="hidden" name="term_meta[cpt_show_gal_desc]" value="0" />
+                <input type="checkbox" name="term_meta[cpt_show_gal_desc]" id="term_meta[cpt_show_gal_desc]" value="1">
+                <?php _e( 'Show Gallery Descripion', 'sha-sgal' ); ?>
+            </label>
+			<p class="description"><?php _e( 'Check, if you want to show gallery description', 'sha-sgal' ); ?></p>
+		</div>

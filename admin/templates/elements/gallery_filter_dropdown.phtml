@@ -1,0 +1,12 @@
+  <select name="gal_id">
+    <option value="-1"><?php _e( 'All Galleries', 'sha-sgal' ); ?></option>
+    <?php foreach ( $terms as $term ): ?>
+    <?php printf(
+      '<option value="%s"%s>%s</option>',
+      (int)$term->term_id,
+      ( isset( $_GET['gal_id'] ) && ( $_GET['gal_id'] == $term->term_id ) ) ? ' selected="selected"' : '',
+      esc_html( $term->name )
+    );
+    ?>
+    <?php endforeach; ?>
+  </select>
